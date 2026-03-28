@@ -15,7 +15,12 @@ export function todoReducer(state, action) {
         const newTotal = state.totalThr - Number(action.payload.amount);
         return {
             ...state,
-            todos: [...state.todos, action.payload],
+            todos: [...state.todos,
+                {
+                    ...action.payload,
+                    category: action.payload.category,
+                }],
+            totalPengeluaran: state.totalPengeluaran + Number(action.payload.amount),
             totalThr: newTotal < 0 ? 0 : newTotal,
         };
         

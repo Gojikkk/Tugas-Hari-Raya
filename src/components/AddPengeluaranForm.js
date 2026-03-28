@@ -1,12 +1,14 @@
 import React, { useState, useContext } from "react";
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { View, TextInput, Button, ActionSheetIOS } from "react-native";
+import { View, TextInput, Button, ActionSheetIOS, TouchableOpacity, Text } from "react-native";
 import { TodoContext } from "../context/ToDoContext";
 
-const AddTHRForm = () => {
+const AddPengeluaranForm = () => {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState(new Date());
+  const [category, setCategory] = useState("others");
+  const [catatan, setCatatan] = useState("");
   const { dispatch } = useContext(TodoContext);
   const onChange = (event, selectedDate) => {
   setShow(false);
@@ -16,12 +18,14 @@ const AddTHRForm = () => {
     if (text.trim() === "") return;
 
     dispatch({
-      type: "ADD_THR",
+      type: "ADD_PENGELUARAN",
       payload: {
         id: Date.now(),
         text: text,
         amount: action.payload.amount,
-        date: action.payload.date,
+        date: date.toISOString,
+        category: category,
+        catatan: catatan,
         completed: false,
       },
     });
@@ -70,9 +74,36 @@ const AddTHRForm = () => {
     onChange={onChange}
   />
 )}
+
+<View style={{ flexDirection: "row", gap: 10, marginBottom: 10 }}>
+  {["Belanja", "Sedekah", "Investasi", "others"].map((c) => (
+    <TouchableOpacity
+      key={c}
+      onPress={() => setCategory(c)}
+      style={{
+        padding: 10,
+        borderWidth: 1,
+        backgroundColor: category === c ? "#f88" : "#eee",
+      }}
+    >   
+      <Text>{c}</Text>
+    </TouchableOpacity>
+  ))}
+</View>
+
+    <TextInput 
+      placeholder="Catatan..."
+        value={amount}
+        onChangeText={setAmount}
+        style={{
+        borderWidth: 1,
+        padding: 10,
+        textAlignVertical: "top",
+        }}
+        />
       <Button title="Simpan" onPress={handleAdd} />
     </View>
   );
 };
 
-export default AddTHRForm;
+export default AddPengeluaranForm;
