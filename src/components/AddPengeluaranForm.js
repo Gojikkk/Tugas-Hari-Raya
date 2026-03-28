@@ -16,7 +16,7 @@ const AddPengeluaranForm = () => {
 };
   const handleAdd = () => {
     if (text.trim() === "") return;
-
+    
     dispatch({
       type: "ADD_PENGELUARAN",
       payload: {
@@ -93,8 +93,8 @@ const AddPengeluaranForm = () => {
 
     <TextInput 
       placeholder="Catatan..."
-        value={amount}
-        onChangeText={setAmount}
+        value={catatan}
+        onChangeText={setCatatan}
         style={{
         borderWidth: 1,
         padding: 10,
