@@ -8,18 +8,23 @@ export function todoReducer(state, action) {
       return {
         ...state,
         todos: [...state.todos, action.payload],
+        totalThr: state.totalThr + Number(action.payload.amount),
       };
 
       case "ADD_PENGELUARAN":
+        const newTotal = state.totalThr - Number(action.payload.amount);
         return {
             ...state,
             todos: [...state.todos, action.payload],
+            totalThr: newTotal < 0 ? 0 : newTotal,
         };
         
     case "DELETE_THR":
+        const thrItem = state.todos.find(t => t.id === action.payload);
       return {  
         ...state,
         todos: state.todos.filter(t => t.id !== action.payload),
+        totalThr: state.totalThr - Number(thrItem.amount),
       };
 
     case "TOGGLE_THR":
