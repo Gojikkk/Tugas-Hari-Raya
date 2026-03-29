@@ -1,5 +1,10 @@
+import { act } from "react";
+
 export const initialState = {
-  todos: [],
+  thrMasuk: [],
+  pengeluaranMasuk: [],
+  totalThr: 0,
+  totalPengeluaran:0,
 };
 
 export function todoReducer(state, action) {
@@ -7,7 +12,7 @@ export function todoReducer(state, action) {
     case "ADD_THR":   
       return {
         ...state,
-        todos: [...state.todos, action.payload],
+        thrMasuk: [...state.thrMasuk, action.payload],
         totalThr: state.totalThr + Number(action.payload.amount),
       };
 
@@ -15,7 +20,7 @@ export function todoReducer(state, action) {
         const newTotal = state.totalThr - Number(action.payload.amount);
         return {
             ...state,
-            todos: [...state.todos,
+            pengeluaranMasuk: [...state.pengeluaranMasuk,
                 {
                     ...action.payload,
                     category: action.payload.category,
@@ -25,17 +30,25 @@ export function todoReducer(state, action) {
         };
         
     case "DELETE_THR":
-        const thrItem = state.todos.find(t => t.id === action.payload);
+        const thrItem = state.thrMasuk.find(t => t.id === action.payload);
       return {  
         ...state,
-        todos: state.todos.filter(t => t.id !== action.payload),
+        thrMasuk: state.thrMasuk.filter(t => t.id !== action.payload),
         totalThr: state.totalThr - Number(thrItem.amount),
+      };
+
+    case "DELETE_PENGELUARAN":
+        const PengeluaranItem = state.thrMasuk.find(t => t.id === action.payload);
+      return {  
+        ...state,
+        pengeluaranMasuk: state.thrMasuk.filter(t => t.id !== action.payload),
+        totalPengeluaran: state.totalPengeluaran - Number(PengeluaranItem.amount),
       };
 
     case "TOGGLE_THR":
       return {
         ...state,
-        todos: state.todos.map(t =>
+        thrMasuk: state.thrMasuk.map(t =>
           t.id === action.payload ? { ...t, completed: !t.completed } : t
         ),
       };
@@ -43,7 +56,7 @@ export function todoReducer(state, action) {
     case "SET_THR":
       return {
         ...state,
-        todos: action.payload,
+        thrMasuk: action.payload,
       };
 
     default:

@@ -15,7 +15,7 @@ const InfoTHR = ({ item }) => {
         <Button
         title="Hapus"
         onPress={() =>
-          dispatch({ type: "DELETE_THR", payload: item.id })
+          dispatch({ type: "DELETE_PENGELUARAN", payload: item.id })
         }
       />
       </View>
