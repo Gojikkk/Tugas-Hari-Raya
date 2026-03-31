@@ -38,17 +38,26 @@ export function todoReducer(state, action) {
       };
 
     case "DELETE_PENGELUARAN":
-        const PengeluaranItem = state.thrMasuk.find(t => t.id === action.payload);
+        const PengeluaranItem = state.pengeluaranMasuk.find(t => t.id === action.payload);
       return {  
         ...state,
-        pengeluaranMasuk: state.thrMasuk.filter(t => t.id !== action.payload),
+        pengeluaranMasuk: state.pengeluaranMasuk.filter(t => t.id !== action.payload),
         totalPengeluaran: state.totalPengeluaran - Number(PengeluaranItem.amount),
+        totalThr : state.totalThr - Number(PengeluaranItem.amount)
       };
 
     case "TOGGLE_THR":
       return {
         ...state,
         thrMasuk: state.thrMasuk.map(t =>
+          t.id === action.payload ? { ...t, completed: !t.completed } : t
+        ),
+      };
+
+          case "TOGGLE_PENGELUARAN":
+      return {
+        ...state,
+        pengeluaranMasuk: state.pengeluaranMasuk.map(t =>
           t.id === action.payload ? { ...t, completed: !t.completed } : t
         ),
       };
