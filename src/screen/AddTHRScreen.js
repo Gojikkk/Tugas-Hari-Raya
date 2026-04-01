@@ -25,18 +25,18 @@ const styles = StyleSheet.create({
     },
     incomecontainer: {
         alignItems: "left",
-        width: '200',
-        Height: '90',
-        padding: '20',
-        borderRadius: '10',
+        width: 200,
+        Height: 90,
+        padding: 20,
+        borderRadius: 10,
         backgroundColor: '#26854a'
     },
     ket: {
-        fontSize: '15',
+        fontSize: 15,
         color: 'white'
     },
     isi:{
-        fontSize: '20',
+        fontSize: 20,
         fontWeight: 'bold'
     }
 })

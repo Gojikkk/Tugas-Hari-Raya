@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, TouchableOpacity, StyleSheet} from "react-native";
 import { TodoContext } from "../context/ToDoContext";
 
 const InfoTHR = ({ item }) => {
@@ -35,17 +35,17 @@ const InfoTHR = ({ item }) => {
 
   const styles = StyleSheet.create({
     historycontainer:{
-      backgroundColor: '#dedcdcf',
+      backgroundColor: '#dedcdc',
       alignItems: 'left'
     },
     from: {
       color: 'black',
       fontWeight: 'bold',
-      fontSize: '16'
+      fontSize: 16
     },
     jumlahTHR: {
       color: '#be2121',
-      fontSize: '16',
+      fontSize: 16,
       fontWeight: 'bold'
     },
     historycontainer: {
@@ -53,11 +53,11 @@ const InfoTHR = ({ item }) => {
       justifyContent: "space-between", 
       padding: 10,
       backgroundColor: '#d3d3d3',
-      borderRadius: '10',
+      borderRadius: 10,
     },
     tanggal: {
       color: '#d7d7d7',
-      fontSize: '12',
+      fontSize: 12,
     },
     button: {
       backgroundColor: '#d3d3d3',

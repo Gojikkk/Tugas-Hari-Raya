@@ -5,8 +5,11 @@ import InfoTHR from "../components/InfoTHR";
 import InfoPengeluaran from "../components/InfoPengeluaran"
 
 const HomeScreen = ({navigation}) => {
-  const { thrMasuk, PengeluaranMasuk } = useTHR();
+  const { thrMasuk, pengeluaranMasuk } = useTHR();
   const { totalThr, totalPengeluaran } = useTHR(); 
+
+    const latestThr = thrMasuk.slice(-4).reverse();
+    const latestPengeluaran = pengeluaranMasuk.slice(-4).reverse();
 
   return (
     <View style={styles.container}>
@@ -43,13 +46,13 @@ const HomeScreen = ({navigation}) => {
         </Text>
 
         <FlatList
-        data={thrMasuk}
+        data={latestThr}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => <InfoTHR item={item} />}
         />
 
         <FlatList 
-        data={PengeluaranMasuk}
+        data={latestPengeluaran}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => <InfoPengeluaran item={item} />}
         />
@@ -66,51 +69,51 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     },
     amount:{
-        fontSize: '24',
+        fontSize: 24,
         fontWeight: 'bold',
     },
     totalthrcontainer: {
         alignItems: "left",
-        width: '200',
-        Height: '90',
-        padding: '20',
-        borderRadius: '10',
+        width: 200,
+        Height: 90,
+        padding: 20,
+        borderRadius: 10,
         backgroundColor: '#a12cc5'
     },
     totalthr: {
-        fontSize: '14',
+        fontSize: 14,
         color: '#e4e4e4',
     },
     totalpengeluarancontainer: {
-        alignItems: "left",
-        width: '100',
-        Height: '60',
-        padding: '20',
-        borderRadius: '10',
+        alignItems: "flex-start",
+        width: 100,
+        height: 60,
+        padding: 20,
+        borderRadius: 10,
         backgroundColor: '#c42c2c'
     },
     tambahthr: {
-        width: '70',
-        borderRadius: '10',
+        width: 70,
+        borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#a12cc5',
         color: 'white'
     },
     tambahpengeluaran: {
-        width: '70',
-        borderRadius: '10',
+        width: 70,
+        borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#a12cc5',
         color: 'white'
     },
     recent: {
-        fontSize: '16',
+        fontSize: 16,
         fontWeight: 'bold',
         alignItems: 'left',
-        marginLeft: '20',
-        marginBottom:'20',
+        marginLeft: 20,
+        marginBottom:20,
     }
 
 

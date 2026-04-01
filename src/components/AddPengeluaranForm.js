@@ -93,39 +93,39 @@ container: {
     justifyContent: 'center',
 },
 inputjumlah: {
-    width: '200',
-    Height: '50',
+    width: 200,
+    Height: 50,
     backgroundColor: '#dedede',
-    borderRadius: '10',
-    marginBottom: '20'
+    borderRadius: 10,
+    marginBottom: 20
 },
 kategori: {
-  width: '40',
-  Height: '40',
+  width: 40,
+  Height: 40,
   backgroundColor: '#dedede',
-  borderRadius: '5'
+  borderRadius: 5
 },
 kategoriactive: {
   backgroundColor: '#b86e6e',
   borderColor: 'red',
-  borderWidth: '1'
+  borderWidth: 1
 },
 catatan: {
-  width: '200',
-  Height: '90',
+  width: 200,
+  Height: 90,
   backgroundColor: '#dedede'
 },
 button: {
   backgroundColor: 'red',
   alignItems: 'center',
   justifyContent: 'center',
-  width: '200',
+  width: 200,
   color: 'white'
 },
   keterangan: {
     color: '#cbc6c6',
     fontWeight: 'bold',
-    marginBottom: '10',
+    marginBottom: 10,
     alignItems: 'center'
   }
 })

@@ -9,14 +9,14 @@ export const TodoProvider = ({ children }) => {
   useEffect(() => {
     loadData().then(data => {
       if (data) {
-        dispatch({ type: "SET_TODOS", payload: data });
+        dispatch({ type: "SET_THR", payload: data });
       }
     });
   }, []);
 
   useEffect(() => {
-    saveData(state.todos);
-  }, [state.todos]);
+    saveData(state);
+  }, [state]);
 
   return (
     <TodoContext.Provider value={{ state, dispatch }}>

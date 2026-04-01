@@ -62,11 +62,8 @@ export function todoReducer(state, action) {
         ),
       };
 
-    case "SET_THR":
-      return {
-        ...state,
-        thrMasuk: action.payload,
-      };
+    case "SET_ALL_DATA":
+      return action.payload;
 
     default:
       return state;

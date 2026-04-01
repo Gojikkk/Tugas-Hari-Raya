@@ -32,19 +32,19 @@ const styles = StyleSheet.create ({
     },
     ketcontainer: {
         alignContent: 'center',
-        marginTop: '20',
-        marginBottom: '20',
+        marginTop: 20,
+        marginBottom: 20,
     },
     newthr: {
         fontWeigth: 'bold',
         color: 'black',
-        fontSize: '14',
+        fontSize: 14,
         marginBottom: '10'
     },
     ket: {
         color: '#e6e6e6',
-        fontSize: '12',
-        marginBottom: '20'
+        fontSize: 12,
+        marginBottom: 20
     }
 })
 

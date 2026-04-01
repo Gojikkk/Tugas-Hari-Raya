@@ -41,11 +41,11 @@ const InfoTHR = ({ item }) => {
     from: {
       color: 'black',
       fontWeight: 'bold',
-      fontSize: '16'
+      fontSize: 16
     },
     jumlahTHR: {
       color: '#be2121',
-      fontSize: '16',
+      fontSize: 16,
       fontWeight: 'bold'
     },
     historycontainer: {
@@ -53,7 +53,7 @@ const InfoTHR = ({ item }) => {
       justifyContent: "space-between", 
       padding: 10,
       backgroundColor: '#d3d3d3',
-      borderRadius: '10',
+      borderRadius: 10,
     },
     tanggal: {
       color: '#d7d7d7',

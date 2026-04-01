@@ -77,24 +77,24 @@ const styles = StyleSheet.create ({
     justifyContent: 'center',
   },
   inputform: {
-    width: '200',
-    Height: '50',
+    width: 200,
+    Height: 50,
     backgroundColor: '#dedede',
-    borderRadius: '10',
-    marginBottom: '20'
+    borderRadius: 10,
+    marginBottom: 20
   },
   inputjumlah: {
-    width: '200',
-    Height: '50',
+    width: 200,
+    Height: 50,
     backgroundColor: '#dedede',
-    borderRadius: '10',
-    marginBottom: '20'
+    borderRadius: 10,
+    marginBottom: 20
   },
   button: {
   backgroundColor: '#285f2d',
   alignItems: 'center',
   justifyContent: 'center',
-  width: '200',
+  width: 200,
   color: 'white'
   },
   keterangan: {
