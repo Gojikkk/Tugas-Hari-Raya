@@ -17,7 +17,7 @@ const InfoTHR = ({ item }) => {
               +Rp{item.amount}
             </Text>
     
-            <Text styles={styles.tanggal}>
+            <Text style={styles.tanggal}>
               {item.date}
             </Text>
           </View>
@@ -35,8 +35,10 @@ const InfoTHR = ({ item }) => {
 
   const styles = StyleSheet.create({
     historycontainer:{
-      backgroundColor: '#dedcdc',
-      alignItems: 'left'
+      backgroundColor: '#e8e4f3',
+      alignItems: 'center',
+      justifyContent: 'center',
+      alignContent: 'center'
     },
     from: {
       color: 'black',
@@ -52,7 +54,7 @@ const InfoTHR = ({ item }) => {
       flexDirection: "row", 
       justifyContent: "space-between", 
       padding: 10,
-      backgroundColor: '#d3d3d3',
+      backgroundColor: '#ffffff',
       borderRadius: 10,
     },
     tanggal: {

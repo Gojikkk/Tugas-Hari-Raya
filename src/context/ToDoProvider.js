@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from "react";
 import { TodoContext } from "./ToDoContext";
 import { todoReducer, initialState } from "../reducers/toDoReducer";
-import { saveData, loadData } from "../storage/asyncStorage";
+import { saveData, loadData } from "../storage/AsyncStorage";
 
 export const TodoProvider = ({ children }) => {
   const [state, dispatch] = useReducer(todoReducer, initialState);
@@ -9,7 +9,7 @@ export const TodoProvider = ({ children }) => {
   useEffect(() => {
     loadData().then(data => {
       if (data) {
-        dispatch({ type: "SET_THR", payload: data });
+        dispatch({ type: "SET_ALL_DATA", payload: data });
       }
     });
   }, []);

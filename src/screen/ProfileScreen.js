@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#fff",
+    backgroundColor: "#e8e4f3",
   },
   title: {
     fontSize: 24,
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   card: {
     padding: 15,
     borderRadius: 10,
-    backgroundColor: "#e4e4e4",
+    backgroundColor: "#ffffff",
     marginBottom: 15,
   },
   label: {

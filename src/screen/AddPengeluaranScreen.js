@@ -1,8 +1,9 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { useNavigation } from '@react-navigation/native';
+import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 import AddPengeluaranForm from "../components/AddPengeluaranForm";
 
-const AddPengeluaranScreen = () => {
+const AddPengeluaranScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
             <View style={styles.ketcontainer}>
@@ -17,7 +18,7 @@ const AddPengeluaranScreen = () => {
                 </Text>
             </View>
 
-            <AddPengeluaranForm />
+            <AddPengeluaranForm onSuccess={() => navigation.goBack()}/>
         </View>
     )
 }
@@ -25,27 +26,33 @@ const AddPengeluaranScreen = () => {
 const styles = StyleSheet.create ({
     container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    alignContent: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#e8e4f3',
+    alignItems: 'center'
     },
     ketcontainer: {
-        alignContent: 'center',
-        marginTop: 20,
+        alignItems: "flex-start",
+        width: 350,
+        height: 130,
+        padding: 20,
+        borderRadius: 20,
+        backgroundColor: '#ac1a1a',
         marginBottom: 20,
+        marginTop: 20
     },
     newthr: {
-        fontWeigth: 'bold',
-        color: 'black',
-        fontSize: 14,
-        marginBottom: '10'
+        fontSize: 24,
+        color: 'white',
+        marginBottom: 5,
+        marginLeft: 10,
+        fontWeight: 'bold'
     },
     ket: {
         color: '#e6e6e6',
-        fontSize: 12,
-        marginBottom: 20
+        fontSize: 15,
+        marginBottom: 20,
+        marginLeft: 11,
+        fontWeight: 'bold'
     }
 })
 
-export default AddPengeluaranForm;
+export default AddPengeluaranScreen;

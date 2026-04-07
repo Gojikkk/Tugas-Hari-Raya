@@ -36,10 +36,8 @@ const HistoryScreen = () => {
 
 const styles = StyleSheet.create ({
     container: {
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    alignContent: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#e8e4f3',
+    flex: 1
     }
 })
 

@@ -17,7 +17,7 @@ const InfoTHR = ({ item }) => {
           -Rp{item.amount}
         </Text>
 
-        <Text styles={styles.tanggal}>
+        <Text style={styles.tanggal}>
           {item.date}
         </Text>
       </View>
@@ -57,7 +57,7 @@ const InfoTHR = ({ item }) => {
     },
     tanggal: {
       color: '#d7d7d7',
-      fontSize: '12',
+      fontSize: 12,
     },
     button: {
       backgroundColor: '#d3d3d3',

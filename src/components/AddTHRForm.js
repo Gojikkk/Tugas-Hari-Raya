@@ -1,16 +1,20 @@
 import React, { useState, useContext } from "react";
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { View, TextInput, Button, ActionSheetIOS, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, Button, ActionSheetIOS, TouchableOpacity, StyleSheet } from "react-native";
 import { TodoContext } from "../context/ToDoContext";
 
-const AddTHRForm = () => {
+const AddTHRForm = ({navigation}) => {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState(new Date());
   const { dispatch } = useContext(TodoContext);
-  const onChange = (event, selectedDate) => {
+  const [show, setShow] = useState(false);
+
+const onChange = (event, selectedDate) => {
+  if (event.type === 'set' && selectedDate) {
+    setDate(selectedDate);
+  }
   setShow(false);
-  if (selectedDate) setDate(selectedDate);
 };
   const handleAdd = () => {
     if (text.trim() === "") return;
@@ -18,15 +22,15 @@ const AddTHRForm = () => {
     dispatch({
       type: "ADD_THR",
       payload: {
-        id: Date.now(),
+        id: date,
         text: text,
-        amount: action.payload.amount,
-        date: action.payload.date,
+        amount: amount,
+        date: date.toISOString(),
         completed: false,
       },
     });
 
-    setText("");
+    navigation.goBack();
   };
 
   return (
@@ -41,7 +45,7 @@ const AddTHRForm = () => {
       />
       
       <Text style={styles.keterangan}>Jumlah</Text>
-      <TextInput 
+      <TextInput
       placeholder="Jumlahnya Berapa..."
         value={amount}
         onChangeText={setAmount}
@@ -56,14 +60,15 @@ const AddTHRForm = () => {
   <Text>{date.toDateString()}</Text>
 </TouchableOpacity>
 {show && (
-  <DateTimePicker
-    value={date}
-    mode="date"
-    display="default"
-    onChange={onChange}
-  />
+<DateTimePicker
+  value={date}
+  mode="date"
+  display="default"
+  is24Hour={true}  
+  onChange={onChange}
+/>
 )}
-      <TouchableOpacity title="Simpan" onPress={handleAdd} style={styles.button}/>
+      <TouchableOpacity title="Simpan" onPress={handleAdd} style={styles.button}>Simpan</TouchableOpacity>
     </View>
   );
 };
@@ -71,36 +76,45 @@ const AddTHRForm = () => {
 const styles = StyleSheet.create ({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    alignContent: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#e8e4f3',
+    alignItems: 'left',
+    alignContent: 'left',
+    justifyContent: 'left',
   },
   inputform: {
-    width: 200,
-    Height: 50,
-    backgroundColor: '#dedede',
+    width: 350,
+    height: 50,
+    backgroundColor: '#fff1ff',
     borderRadius: 10,
-    marginBottom: 20
+    marginBottom: 20,
+    padding: 20,
+    color: '#b6b6b6'
   },
   inputjumlah: {
-    width: 200,
-    Height: 50,
-    backgroundColor: '#dedede',
+    width: 350,
+    height: 50,
+    backgroundColor: '#fff1ff',
     borderRadius: 10,
-    marginBottom: 20
+    marginBottom: 20,
+    padding: 20,
+    color: '#b6b6b6'
   },
   button: {
-  backgroundColor: '#285f2d',
+  backgroundColor: '#0B7A5C',
   alignItems: 'center',
   justifyContent: 'center',
-  width: 200,
-  color: 'white'
+  width: 350,
+  color: 'white',
+  fontWeight: 'bold',
+  fontSize: 22,
+  borderRadius: 15,
+  marginTop: 130,
+  height: 70
   },
   keterangan: {
-    color: '#cbc6c6',
+    color: '#4e4d4d',
     fontWeight: 'bold',
-    marginBottom: '10',
+    marginBottom: 10,
     alignItems: 'center'
   }
 

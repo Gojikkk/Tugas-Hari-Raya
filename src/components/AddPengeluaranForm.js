@@ -1,36 +1,38 @@
 import React, { useState, useContext } from "react";
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { View, TextInput, Button, ActionSheetIOS, TouchableOpacity, Text } from "react-native";
+import { View, TextInput, Button, ActionSheetIOS, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { TodoContext } from "../context/ToDoContext";
-import { Color } from "react-native/types_generated/Libraries/Animated/AnimatedExports";
 
-const AddPengeluaranForm = () => {
-  const [text, setText] = useState("");
+
+const AddPengeluaranForm = ({onSuccess}) => {
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState(new Date());
   const [category, setCategory] = useState("others");
   const [catatan, setCatatan] = useState("");
   const { dispatch } = useContext(TodoContext);
+  const [show, setShow] = useState(false);
+
   const onChange = (event, selectedDate) => {
   setShow(false);
   if (selectedDate) setDate(selectedDate);
 };
   const handleAdd = () => {
-    if (text.trim() === "") return;
+    if (amount.trim() === "") return;
     
     dispatch({
       type: "ADD_PENGELUARAN",
       payload: {
         id: Date.now(),
-        amount: action.payload.amount,
-        date: date.toISOString,
+        amount: amount,
+        date: date.toISOString(),
         category: category,
         catatan: catatan,
         completed: false,
       },
     });
 
-    setText("");
+    setAmount("");
+    onSuccess();
   };
 
   return (
@@ -51,35 +53,38 @@ const AddPengeluaranForm = () => {
   <Text>{date.toDateString()}</Text>
   </TouchableOpacity>
 {show && (
-  <DateTimePicker
-    value={date}
-    mode="date"
-    display="default"
-    onChange={onChange}
-  />
+<DateTimePicker
+  value={new Date(date)}
+  mode="date"
+  display="default"
+  is24Hour={true}      
+  onChange={onChange}
+/>
 )}
 
       <Text style={styles.keterangan}>Kategori</Text>
-<View style={{ flexDirection: "row", gap: 10, marginBottom: 10 }}>
+<View style={{ flexDirection: "row", gap: 10, marginBottom: 10, flexWrap: 'wrap' }}>
   {["Belanja", "Sedekah", "Investasi", "others"].map((c) => (
     <TouchableOpacity
       key={c}
       onPress={() => setCategory(c)}
-      style={[styles.kategori, activeCategory === cat && styles.kategoriactive]}
+      style={[styles.kategori, category === c && styles.kategoriactive]}
     >
-      <Text>{c}</Text>
+      <Text style={{fontWeight: 'bold', color: '#3b3b3b'}}>{c}</Text>
     </TouchableOpacity>
   ))}
 </View>
 
-<Text style={styles.keterangan}>Catatam</Text>
+<Text style={styles.keterangan}>Catatan</Text>
     <TextInput 
       placeholder="What was this for"
         value={catatan}
         onChangeText={setCatatan}
         style={styles.catatan}
         />
-      <TouchableOpacity title="Simpan" onPress={handleAdd} style={styles.button}/>
+      <TouchableOpacity title="Simpan" onPress={handleAdd} style={styles.button}>
+        <Text style={{ color: 'white', fontWeight: 'bold' }}>Simpan</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -87,23 +92,27 @@ const AddPengeluaranForm = () => {
 const styles = StyleSheet.create({
 container: {
     flex: 1,
-    backgroundColor: '#fff',
+    flex: 1,
+    backgroundColor: '#e8e4f3',
     alignItems: 'center',
     alignContent: 'center',
     justifyContent: 'center',
 },
 inputjumlah: {
-    width: 200,
-    Height: 50,
-    backgroundColor: '#dedede',
+    width: 350,
+    padding: 20,
+    height: 50,
+    backgroundColor: '#ffffff',
     borderRadius: 10,
     marginBottom: 20
 },
 kategori: {
-  width: 40,
-  Height: 40,
-  backgroundColor: '#dedede',
-  borderRadius: 5
+  width: 120,
+  height: 70,
+  backgroundColor: '#ffffff',
+  borderRadius: 10,
+  alignItems: 'center',
+  justifyContent: 'center'
 },
 kategoriactive: {
   backgroundColor: '#b86e6e',
@@ -111,19 +120,25 @@ kategoriactive: {
   borderWidth: 1
 },
 catatan: {
-  width: 200,
-  Height: 90,
-  backgroundColor: '#dedede'
+  width: 350,
+  height: 100,
+  borderRadius: 20,
+  padding: 20,
+  backgroundColor: '#ffffff'
 },
 button: {
-  backgroundColor: 'red',
+  backgroundColor: '#ac1a1a',
   alignItems: 'center',
   justifyContent: 'center',
-  width: 200,
-  color: 'white'
+  width: 350,
+  color: 'white',
+  marginTop: 30,
+  borderRadius: 20,
+  height: 50
+
 },
   keterangan: {
-    color: '#cbc6c6',
+    color: '#4e4d4d',
     fontWeight: 'bold',
     marginBottom: 10,
     alignItems: 'center'

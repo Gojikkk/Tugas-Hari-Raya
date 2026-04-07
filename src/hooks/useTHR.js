@@ -38,3 +38,5 @@ export const useTHR = () => {
     dispatch,
   };
 };
+
+export default useTHR;

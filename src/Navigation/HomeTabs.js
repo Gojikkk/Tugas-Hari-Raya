@@ -19,12 +19,22 @@ return (
     },
         tabBarActiveTintColor: '#9936c6',
         tabBarInactiveTintColor: 'gray',
-        tabBarStyle: { height: 60, paddingBottom: 8 },
+        tabBarStyle: { position: 'absolute', backgroundColor: '#fdf2ff',height: 60, paddingBottom: 8, borderTopRightRadius: 30, borderTopLeftRadius: 20, height: 80},
         })}
     >
-        <Tab.Screen name='Home' component={HomeScreen} options={{headerTitleAlign: 'center', headerShadowVisible: false}} />
-        <Tab.Screen name='History' component={SHistoryScreen} options={{headerTitleAlign: 'center', headerShadowVisible: false}}/>
-        <Tab.Screen name='Profile' component={ProfileScreen} options={{headerTitleAlign: 'center', headerShadowVisible: false}}  />
+<Tab.Screen
+  name='Home'
+  component={HomeScreen}
+  options={{
+    headerTitleAlign: 'center',headerShadowVisible: false,headerStyle: {backgroundColor: '#e8e4f3',},headerTintColor: '#8c36c6',headerTitleStyle: {fontWeight: 'bold',fontSize: 20,},headerTitle: 'Find My THR', title: 'Home',
+    }}
+/>
+        <Tab.Screen name='History' component={HistoryScreen} options={{
+    headerTitleAlign: 'center',headerShadowVisible: false,headerStyle: {backgroundColor: '#e8e4f3',},headerTintColor: '#8c36c6',headerTitleStyle: {fontWeight: 'bold',fontSize: 20,},headerTitle: 'Find My THR', title: 'History',
+    }}/>
+        <Tab.Screen name='Profile' component={ProfileScreen} options={{
+    headerTitleAlign: 'center',headerShadowVisible: false,headerStyle: {backgroundColor: '#e8e4f3',},headerTintColor: '#8c36c6',headerTitleStyle: {fontWeight: 'bold',fontSize: 20,},headerTitle: 'Find My THR', title: 'Profile',
+    }}  />
     </Tab.Navigator>
     );
     }
