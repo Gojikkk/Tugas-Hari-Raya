@@ -6,10 +6,13 @@ import InfoPengeluaran from "../components/InfoPengeluaran"
 
 const HomeScreen = ({navigation}) => {
   const { thrMasuk, pengeluaranMasuk } = useTHR();
-  const { totalThr, totalPengeluaran } = useTHR(); 
-
+  const { totalThr, totalPengeluaran } = useTHR();
     const latestThr = thrMasuk.slice(-4).reverse();
-    const latestPengeluaran = pengeluaranMasuk.slice(-4).reverse();
+    const latestPengeluaran = pengeluaranMasuk.slice(-4).reverse(); 
+  const combinedData = [
+  ...latestThr.map(item => ({ ...item, type: 'thr' })),
+  ...latestPengeluaran.map(item => ({ ...item, type: 'pengeluaran' })),
+];
 
   return (
     <View style={styles.container}>
@@ -45,17 +48,14 @@ const HomeScreen = ({navigation}) => {
             Recent Activity
         </Text>
 
-        <FlatList
-        data={latestThr}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <InfoTHR item={item} />}
-        />
-
-        <FlatList 
-        data={latestPengeluaran}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <InfoPengeluaran item={item} />}
-        />
+<FlatList
+  data={combinedData}
+  keyExtractor={(item) => item.id.toString()}
+  renderItem={({ item }) => {
+    if(item.type === 'thr') return <InfoTHR item={item} />;
+    else return <InfoPengeluaran item={item} />;
+  }}
+/>
     </View>
     );
 };
@@ -128,8 +128,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     alignSelf: 'flex-start',
-    marginLeft: 50,
-    marginBottom: 20,
+    marginLeft: 23,
+    marginBottom: 5,
     marginTop: 20
     }
 

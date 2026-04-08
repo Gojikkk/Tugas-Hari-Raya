@@ -9,17 +9,11 @@ const InfoTHR = ({ item }) => {
     <View style={{ flexDirection: "row", justifyContent: "space-between", padding: 10 }}>
       
       <View style={styles.historycontainer}>
-        <Text style={styles.from}>
-          {item.category}
-        </Text>
-
-        <Text style={styles.jumlahTHR}>
-          -Rp{item.amount}
-        </Text>
-
-        <Text style={styles.tanggal}>
-          {item.date}
-        </Text>
+        <View style={{ flexDirection: 'column' }}>
+          <Text style={styles.from}>{item.category}</Text>
+          <Text style={styles.tanggal}>{item.date}</Text>
+      </View>
+          <Text style={styles.jumlahTHR}>- Rp{item.amount}</Text>
       </View>
 
         <TouchableOpacity
@@ -34,30 +28,34 @@ const InfoTHR = ({ item }) => {
 };
 
   const styles = StyleSheet.create({
-    historycontainer:{
-      backgroundColor: '#dedcdc',
-      alignItems: 'left'
-    },
     from: {
       color: 'black',
       fontWeight: 'bold',
-      fontSize: 16
+      fontSize: 20,
+      marginBottom: 5,
+      marginTop: 1,
+      marginLeft: 10
     },
     jumlahTHR: {
       color: '#be2121',
-      fontSize: 16,
-      fontWeight: 'bold'
+      fontSize: 20,
+      fontWeight: 'bold',
+      marginTop: 10,
+      marginRight: 17
     },
     historycontainer: {
       flexDirection: "row", 
       justifyContent: "space-between", 
+      width: 350,
+      height: 70,
       padding: 10,
-      backgroundColor: '#d3d3d3',
+      backgroundColor: '#ffffff',
       borderRadius: 10,
     },
     tanggal: {
-      color: '#d7d7d7',
+      color: '#a8a8a8',
       fontSize: 12,
+      marginLeft: 10
     },
     button: {
       backgroundColor: '#d3d3d3',
